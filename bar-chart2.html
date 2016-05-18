@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bar charts</title>
+    <script type="text/javascript" src="d3/d3.v3.js"></script>
+
+    <style>
+
+
+
+    </style>
+
+  </head>
+  <body>
+    <h1>Bar chart 2</h1>
+
+    <script type="text/javascript">
+      var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+                11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+
+      var w = 500;
+      var h = 100;
+      //Create SVG element
+      var svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+     svg.selectAll("rect")
+       .data(dataset)
+       .enter()
+       .append("rect")
+        .attr("x", function(d, i) {
+          return i * (w / dataset.length);  //Bar width of 20 plus 1 for padding
+        })
+       .attr("y", function(d) {
+          return h - d;  //Height minus data value
+        })
+       .attr("width", 20)
+       .attr("height", function(d) {
+            return d * 4;  //Just the data value
+        })
+       .attr("fill", function(d) {
+          return "rgb(0, 0, " + (d * 10) + ")";
+      });
+
+
+
+
+    </script>
+  </body>
+</html> 
